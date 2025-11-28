@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spam Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="box">
+        <h2>Spam / Ham Detector</h2>
+
+        <form action="/predict" method="post">
+            <label>Enter Text:</label>
+            <textarea name="text" rows="3">{{ text }}</textarea>
+
+            <label>Enter URL:</label>
+            <input type="text" name="url" value="{{ url }}"/>
+
+            <button type="submit">Check</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h3>Result: {{ result }}</h3>
+            <p>HAM Probability: <b>{{ ham }}%</b></p>
+            <p>SPAM Probability: <b>{{ spam }}%</b></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
